@@ -711,6 +711,446 @@
         </div>
     </section>
 
+        <style>
+        /* Software Showcase Section */
+        .software-showcase {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 30, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .software-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .showcase-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .showcase-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .showcase-subtitle {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Main Showcase Grid */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .showcase-content {
+            padding: 2rem;
+        }
+
+        .showcase-content h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .showcase-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+
+        .feature-list li::before {
+            content: '✨';
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .showcase-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .showcase-image-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .showcase-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Screenshots Gallery */
+        .screenshots-gallery {
+            margin-top: 4rem;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            group: gallery-item;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            color: #cccccc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .tech-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-icon {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .tech-icon span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-icon p {
+            color: #cccccc;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .showcase-title {
+                font-size: 2.5rem;
+            }
+
+            .showcase-content h3 {
+                font-size: 1.8rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-icons {
+                gap: 1rem;
+            }
+
+            .tech-icon {
+                padding: 1rem;
+            }
+        }
+
+        /* Animation for scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+          <section class="software-showcase">
+        <div class="showcase-container">
+            <!-- Header -->
+            <div class="showcase-header reveal">
+                <h2 class="showcase-title">Yazılımımızı Keşfedin</h2>
+                <p class="showcase-subtitle">
+                    Modern teknolojilerle geliştirilmiş, kullanıcı dostu arayüzü ve güçlü özellikleriyle 
+                    işlerinizi kolaylaştıran profesyonel çözümümüzü inceleyin.
+                </p>
+            </div>
+
+            <!-- Main Showcase -->
+            <div class="showcase-grid reveal">
+                <div class="showcase-content">
+                    <h3>Güçlü ve Esnek Çözüm</h3>
+                    <p>
+                        Yazılımımız, modern iş dünyasının ihtiyaçlarını karşılamak için tasarlanmış, 
+                        ölçeklenebilir ve güvenilir bir platformdur. Kullanıcı deneyimini ön planda tutarak 
+                        geliştirilen arayüzü sayesinde herkes kolayca kullanabilir.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Bulut tabanlı güvenli altyapı</li>
+                        <li>Gerçek zamanlı veri senkronizasyonu</li>
+                        <li>Mobil uyumlu responsive tasarım</li>
+                        <li>Gelişmiş analitik ve raporlama</li>
+                        <li>7/24 teknik destek</li>
+                    </ul>
+                    <a href="#" class="btn-primary">
+                        <span>🚀</span> Hemen Deneyin
+                    </a>
+                </div>
+                <div class="showcase-image-container">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop&crop=center" 
+                         alt="Dashboard Görünümü" class="showcase-image">
+                </div>
+            </div>
+
+            <!-- Screenshots Gallery -->
+            <div class="screenshots-gallery reveal">
+                <h3 class="gallery-title">Uygulama Ekran Görüntüleri</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop&crop=center" 
+                             alt="Analytics Dashboard" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Analitik Dashboard</h4>
+                            <p>Detaylı istatistikler ve grafiklerle verilerinizi görselleştirin</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop&crop=center" 
+                             alt="Mobile App" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Mobil Uygulama</h4>
+                            <p>Her yerden erişim sağlayın, mobil uyumlu tasarım</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop&crop=center" 
+                             alt="Team Collaboration" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Takım İşbirliği</h4>
+                            <p>Ekibinizle gerçek zamanlı işbirliği yapın</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=250&fit=crop&crop=center" 
+                             alt="Data Visualization" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Veri Görselleştirme</h4>
+                            <p>Karmaşık verileri anlaşılır grafiklere dönüştürün</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=250&fit=crop&crop=center" 
+                             alt="Security Features" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Güvenlik Özellikleri</h4>
+                            <p>Enterprise seviye güvenlik ve şifreleme</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=400&h=250&fit=crop&crop=center" 
+                             alt="API Integration" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>API Entegrasyonu</h4>
+                            <p>Mevcut sistemlerinizle sorunsuz entegrasyon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="tech-stack reveal">
+                <h3 class="tech-title">Kullanılan Teknolojiler</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon">
+                        <span>⚛️</span>
+                        <p>React</p>
+                    </div>
+                    <div class="tech-icon">
+                        <span>🟢</span>
+                        <p>Node.js</p>
+                    </div>
+                    <div class="tech-icon">
+                        <span>🐘</span>
+                        <p>PostgreSQL</p>
+                    </div>
+                    <div class="tech-icon">
+                        <span>☁️</span>
+                        <p>AWS Cloud</p>
+                    </div>
+                    <div class="tech-icon">
+                        <span>🔒</span>
+                        <p>SSL/TLS</p>
+                    </div>
+                    <div class="tech-icon">
+                        <span>📱</span>
+                        <p>Progressive Web App</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll reveal animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+    </script>
+    
     <!-- Payment Section -->
     <section class="payment-section">
         <div class="payment-container">
